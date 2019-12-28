@@ -1,7 +1,17 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH="$PATH:/Users/sam/.local/bin:/usr/local/sbin:$PATH"
+# Default PATH
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin"
+
+# Add personal script directory to PATH
+export PATH="$PATH:/User/sam/.local/bin"
+
+# Add LaTeX packages to PATH
+export PATH="$PATH:/Library/TeX/texbin"
+
+# Add Xquarts packages to PATH
+export PATH="$PATH:/opt/X11/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/sam/.oh-my-zsh"
