@@ -1,4 +1,5 @@
 # File: ~/.config/aliasrc
+# vi: filetype=sh
 
 # Use nvim in place of vim
 alias	vim="nvim"
@@ -108,8 +109,7 @@ uback() {
 # Moves all passed paramenters into the trash (located in ~/.Trash)
 trash() {
     for var in "$@"; do
-        printf "Moving '%s' to ~/.Trash\n" "$var"
-        mv "$var" ~/.Trash
+        mv -nv "$var" ~/.Trash
     done
 }
 
