@@ -44,6 +44,7 @@ call plug#end()
 	set splitbelow splitright
 	set history=1000 undolevels=1000
 	set wildmenu
+	set scrolloff=10
 
 	" Allows vim yank and paste to use the system clipboard
 	set clipboard=unnamed
@@ -55,7 +56,7 @@ call plug#end()
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Special markdown and wiki file settings
-	autocmd BufRead,BufNewFile *.md,*.wiki,*.txt setlocal textwidth=79 spell
+	autocmd BufRead,BufNewFile *.md,*.wiki setlocal textwidth=79 spell
 
 " Personal shortcuts
 	" Shortcuts to frequently toggled settings
@@ -68,7 +69,7 @@ call plug#end()
 	nnoremap S :%s//g<Left><Left>
 
 	" Plugin specific keybindings
-	map <C-n> :NERDTreeToggle<CR>
+	nnoremap <leader>n :NERDTreeToggle<CR>
 	nnoremap <leader>g :Goyo<CR>
 
 	" Better navigation of split windows
