@@ -49,7 +49,8 @@ alias	dotf="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
 		dotb="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME branch" \
 		dotch="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout" \
 		dotl="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME log --oneline" \
-		dotd="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME diff"
+		dotd="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME diff" \
+		dotp="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME git push --set-upstream origin master"
 
 # Saving a few key presses off frequently uses git commands
 alias	gc="git commit -v" \
@@ -61,7 +62,8 @@ alias	gc="git commit -v" \
 		gd="git diff" \
 		gr="git remote" \
 		gl="git log --oneline" \
-		gp="git push"
+		gp="git push" \
+		gpuom="git push --set-upstream origin master"
 
 # Making and deleting directories
 alias	md="mkdir -p" \
