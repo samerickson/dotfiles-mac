@@ -1,9 +1,6 @@
-" File              : init.vim
-" License           : MIT
-" Author            : Sam Erickson <sam@samerickson.me>
-" Date              : 07.12.2019
-" Last Modified Date: 17.12.2019
-" Last Modified By  : Sam Erickson <sam@samerickson.me>
+" File: ~/.config/nvim/init.vim
+" Author: Sam Erickson
+" License: MIT
 
 " Load plugin manager if it is not already installed
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
@@ -19,9 +16,6 @@ call plug#begin('~/.config/nvim/plugins')
 	Plug 'junegunn/goyo.vim'
 call plug#end()
 
-" emmet settings
-	let g:user_emmet_leader_key=','
-
 " vim-header information
 	let g:header_auto_add_header = 0
 	let g:header_field_author = 'Sam Erickson'
@@ -29,8 +23,6 @@ call plug#end()
 	let g:header_field_author_email = 'sam@samerickson.me'
 	map <F4> :AddHeader<CR>
 	noremap <leader>h :AddHeader
-	noremap <leader>lgnu :AddGNULicense<CR>
-	noremap <leader>lmit :AddMITLicence<CR>
 
 " Some basics:
 	let mapleader =","
@@ -77,17 +69,21 @@ call plug#end()
 	map <C-K> <C-W><C-K>
 	map <C-L> <C-W><C-L>
 	map <C-H> <C-W><C-H>
+	
+	" Use ctrl+l to correct spelling on the fly
+	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 
 " Shortcuts to opening frequently accessed files in a new tab
 	" Shell files
 	nnoremap <leader>cfa :tabnew ~/.config/aliasrc
 	nnoremap <leader>cfz :tabnew ~/.zshrc
 	nnoremap <leader>cfb :tabnew ~/.bash_profile
+	nnoremap <leader>cft :tabnew ~/.tmux.conf
 
 	" Vimrc
 	nnoremap <leader>cfv :tabnew $MYVIMRC
 	nnoremap <leader>sv :so $MYVIMRC
-
 
 
 " Changes for specific files types

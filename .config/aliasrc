@@ -1,4 +1,6 @@
 # File: ~/.config/aliasrc
+# Author: Sam Erickson
+# License: MIT
 # vi: filetype=sh
 
 # Use nvim in place of vim

@@ -1,4 +1,4 @@
-# ~/.profile
+# File: ~/.profile
 
 [[ $- != *i* ]] && return
 [[ $DISPLAY ]] && shopt -s checkwinsize
