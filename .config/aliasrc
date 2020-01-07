@@ -47,15 +47,14 @@ alias	md="mkdir -p" \
 
 # Managing dotfiles / otherwise that is a lot of typting for routine file managment
 dotf() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@ }
-dota() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME add -f $@ }
-dots() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME status -uno }
-dotc() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit }
-dotcm() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit -m $@ }
-dotam() { git --git-dir-$HOME/.dotfiles --work-tree=$HOME commit --amend $@ }
-dotb() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME branch $@ }
-dotch() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout $@ }
-dotl() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME log --oneline }
-dotd() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME diff $@ }
+dota() { dotf add -f $@ }
+dots() { dotf status -uno }
+dotc() { [ -z "$1" ] && dotf commit -m $@ || dotf commit }
+dotam() { dotf commit --amend $@ }
+dotb() { dotf branch $@ }
+dotco() { dotf checkout $@ }
+dotl() { dotf log --oneline }
+dotd() { dotf diff $@ }
 
 # Saving a few key presses off frequently uses git commands
 gc() { [ -z "$1" ] && git commit -m $@ || git commit }
