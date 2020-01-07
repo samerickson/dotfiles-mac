@@ -55,7 +55,7 @@ dotb()  { dotf branch $@ }
 dotco() { dotf checkout $@ }
 dotl()  { dotf log --oneline }
 dotd()  { dotf diff $@ }
-dotpl() { dotf push --set-upstream origin master }
+dotpl() { dotf push }
 dotps() { dotf pull }
 
 # Saving a few key presses off frequently uses git commands
