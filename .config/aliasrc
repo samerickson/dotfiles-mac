@@ -31,7 +31,8 @@ alias	cfb="$EDITOR ~/.bash_profile" \
 		cfz="$EDITOR ~/.zshrc" \
 		cfa="$EDITOR ~/.config/aliasrc" \
 		cfv="$EDITOR ~/.config/nvim/init.vim" \
-		cft="$EDITOR ~/.tmux.conf"
+		cft="$EDITOR ~/.tmux.conf" \
+		cfg="$EDITOR ~/.gitconfig"
 
 # Aliases for saving a few key presses off ls commands
 alias 	ls="ls -G" \
