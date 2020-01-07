@@ -55,8 +55,8 @@ dotb()  { dotf branch $@ }
 dotco() { dotf checkout $@ }
 dotl()  { dotf log --oneline }
 dotd()  { dotf diff $@ }
-dotpl() { dotf push }
-dotps() { dotf pull }
+dotpl() { dotf pull }
+dotps() { dotf push }
 
 # Saving a few key presses off frequently uses git commands
 gc()  { git commit -m $@ }
