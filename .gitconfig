@@ -1,0 +1,16 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Sam Erickson
+	email = samericksn@gmail.com
+
+[alias]
+	s = status
+	d = diff
+	c = commit
+	cm = commit -m
+	co = checkout
+	br = branch
+	pr = pull --rebase
+	last = log -1 HEAD
+	cane = commit --amend --no-edit
+	pusm = push --set-upstream

@@ -47,7 +47,7 @@ alias	md="mkdir -p" \
 
 # Managing dotfiles / otherwise that is a lot of typting for routine file managment
 dotf() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@ }
-dota() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME add $@ }
+dota() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME add -f $@ }
 dots() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME status -uno }
 dotc() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit }
 dotcm() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit -m $@ }
