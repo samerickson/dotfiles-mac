@@ -14,41 +14,23 @@ call plug#begin('~/.config/nvim/plugins')
 	Plug 'vimwiki/vimwiki'
 	Plug 'scrooloose/nerdtree'
 	Plug 'junegunn/goyo.vim'
+	Plug 'arcticicestudio/nord-vim'
 call plug#end()
-
-" vim-header information
-	let g:header_auto_add_header = 0
-	let g:header_field_author = 'Sam Erickson'
-	let g:header_field_license_id = 'MIT'
-	let g:header_field_author_email = 'sam@samerickson.me'
-	map <F4> :AddHeader<CR>
-	noremap <leader>h :AddHeader
 
 " Some basics:
 	let mapleader =","
-	map <CapsLock> <Esc>
 	set laststatus=2 ruler rulerformat=%l,%v
-	set nocompatible nohlsearch
+	set nocompatible nohlsearch 
 	filetype plugin on
 	syntax on
 	set listchars=tab:»·,extends:›,precedes:·,trail:·
 	set sw=4 sts=4 ts=4 noet
 	set splitbelow splitright
 	set history=1000 undolevels=1000
-	set wildmenu
 	set scrolloff=10
 
 	" Allows vim yank and paste to use the system clipboard
 	set clipboard=unnamed
-
-" Enable autocompletion:
-	set wildmode=longest,list,full
-
-" Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Special markdown and wiki file settings
-	autocmd BufRead,BufNewFile *.md,*.wiki setlocal textwidth=79 spell
 
 " Personal shortcuts
 	" Shortcuts to frequently toggled settings
@@ -69,27 +51,27 @@ call plug#end()
 	map <C-K> <C-W><C-K>
 	map <C-L> <C-W><C-L>
 	map <C-H> <C-W><C-H>
-	
+
+" Reformat paragraphs
+	nnoremap Q gqap
+	vnoremap Q gq
 	" Use ctrl+l to correct spelling on the fly
 	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-
-" Shortcuts to opening frequently accessed files in a new tab
-	" Shell files
-	nnoremap <leader>cfa :tabnew ~/.config/aliasrc
-	nnoremap <leader>cfz :tabnew ~/.zshrc
-	nnoremap <leader>cfb :tabnew ~/.bash_profile
-	nnoremap <leader>cft :tabnew ~/.tmux.conf
-
-	" Vimrc
-	nnoremap <leader>cfv :tabnew $MYVIMRC
-	nnoremap <leader>sv :so $MYVIMRC
-
+	" Add todays date to file
+	inoremap <leader>t <Esc>:put =strftime('%Y-%m-%d')<CR>
+	nnoremap <leader>t :put =strftime('%Y-%m-%d')<CR>
 
 " Changes for specific files types
 	autocmd filetype php		set filetype=html
 	autocmd filetype html,xml	set shiftwidth=2 tabstop=2 smartindent
 	autocmd filetype vimwiki	set filetype=markdown
+
+" Special markdown and wiki file settings
+	autocmd BufRead,BufNewFile *.md,*.wiki setlocal textwidth=79 spell
+
+" Disables automatic commenting on newline:
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Vimwiki settings
 	let g:vimwiki_global_ext = 0
