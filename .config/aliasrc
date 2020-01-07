@@ -40,75 +40,35 @@ alias 	ls="ls -G" \
 		llh="ls -lh" \
 		lah="ls -lah" \
 
-# Managing dotfiles / otherwise that is a lot of typting for routine file managment
-alias	dotf="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME" \
-		dota="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME add" \
-		dots="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME status -uno" \
-		dotc="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit " \
-		dotcm="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit -m" \
-		dotb="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME branch" \
-		dotch="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout" \
-		dotl="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME log --oneline" \
-		dotd="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME diff" \
-		dotp="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME git push --set-upstream origin master"
-
-# Saving a few key presses off frequently uses git commands
-alias	gc="git commit -v" \
-		gc!="git commit -v --amend " \
-		gc="git checkout -b" \
-		gcm="git commit -m" \
-		gs="git status" \
-		ga="git add" \
-		gd="git diff" \
-		gr="git remote" \
-		gl="git log --oneline" \
-		gp="git push" \
-		gpuom="git push --set-upstream origin master"
-
 # Making and deleting directories
 alias	md="mkdir -p" \
 		rd="rmdir"
 
-# These ones are here just for fun
-alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
+# Managing dotfiles / otherwise that is a lot of typting for routine file managment
+dotf() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@ }
+dota() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME add $@ }
+dots() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME status -uno }
+dotc() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit }
+dotcm() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit -m $@ }
+dotb() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME branch $@ }
+dotch() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout $@ }
+dotl() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME log --oneline }
+dotd() { git --git-dir=$HOME/.dotfiles --work-tree=$HOME diff $@ }
 
-# ------------
-#	Functions:
-# ------------
+# Saving a few key presses off frequently uses git commands
+gc() { git commit -S -m $@ }
+gs() { git status }
+ga() { git add  $@ }
+gd() { git diff $@ }
+gr() { git remote $@ }
+gl() { git log --oneline }
+gp() { git push $@ }
+
+# Search bash history
+hist() { history | grep $@ }
 
 # Cd into a directory followed by ls
 cs() { cd $1 && echo "$1" && ls; }
-
-# Find and go to root directory of current git repository
-gcd() { cd "$(git rev-parse --show-toplevel)"; }
-
-# Display git commits in a pretty one line format
-commitlist() { git log --pretty=format: %h - %an, %ar : %s; }
-
-# List of the directories in the directory stack
-#	you can go back to previous directory using popd
-d() {
-	[ -n $1] && dirs "$@" || dirs -v | head -10
-}
-
-# Backup a file or directory the lazy way
-#	Useful for tinkering with config files, or temporarily changing code
-back() {
-	for var in "$@"; do
-		cp -r "$var" "$var.backup"
-		echo "Created backup of $var:	$var.backup"
-	done
-}
-
-# If a ".backup" file exists, swap it with the file of the same name, otherwise
-#	remove the .backup suffix
-uback() {
-	[ ! -f "$1.backup" ] && printf "File:\t$1.backup, not found.\n"
-	[ -f "$1.backup" ] && [ -f "$1" ] && mv "$1" "$1.tmp" && mv "$1.backup" "$1" && mv "$1.tmp" "$1.backup" && \
-		printf "Swapped $1.backup with $1"
-	[ -f "$1.backup" ] && [ ! -f "$1" ] && mv "$1.backup" "$1" && \
-		printf "Orriginal File not found restored from $1.backup"
-}
 
 # Moves all passed paramenters into the trash (located in ~/.Trash)
 trash() {
@@ -116,4 +76,3 @@ trash() {
         mv -nv "$var" ~/.Trash
     done
 }
-
