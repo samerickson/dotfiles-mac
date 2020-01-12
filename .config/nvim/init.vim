@@ -14,7 +14,6 @@ call plug#begin('~/.config/nvim/plugins')
 	Plug 'vimwiki/vimwiki'
 	Plug 'scrooloose/nerdtree'
 	Plug 'junegunn/goyo.vim'
-	Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " Some basics:
@@ -73,8 +72,18 @@ call plug#end()
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Vimtex settings
+	let g:tex_flavor='latex'
+	let g:vimtex_view_method='skim' " Use zathura on linux
+	let g:vimtex_quickfix_mode=0
+	set conceallevel=1
+	let g:tex_conceal='abdmg'
+
 " Vimwiki settings
 	let g:vimwiki_global_ext = 0
 	let g:vimwiki_list = [{'path': '~/OneDrive/notes/',
 		\ 'syntax': 'markdown', 'ext': '.md' }]
 
+" Colors
+	hi markdownItalic					cterm=italic gui=italic ctermfg=fg
+	hi markdownBold						cterm=bold gui=bold ctermfg=fg
