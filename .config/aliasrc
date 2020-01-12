@@ -45,6 +45,9 @@ alias 	ls="ls -G" \
 alias	md="mkdir -p" \
 		rd="rmdir"
 
+# Make scp use ssh config by default
+alias	scp="scp -F ~/.ssh/config"
+
 # Managing dotfiles / otherwise that is a lot of typting for routine file managment
 dotf()  { git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@ }
 dota()  { dotf add -f $@ }
@@ -78,6 +81,9 @@ cs() { cd $1 && echo "$1" && ls; }
 # Moves all passed paramenters into the trash (located in ~/.Trash)
 trash() {
     for var in "$@"; do
-        mv -nv "$var" ~/.Trash
+		file="$var-$(date '+%Y-%m-%d_%H:%M:%S')"
+		mv -n "$var" "$file"
+		mv -n "$file" "$HOME/.Trash"
+		echo "Moved $var -> $HOME/.Trash/$file"
     done
 }

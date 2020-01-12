@@ -83,7 +83,3 @@ call plug#end()
 	let g:vimwiki_global_ext = 0
 	let g:vimwiki_list = [{'path': '~/OneDrive/notes/',
 		\ 'syntax': 'markdown', 'ext': '.md' }]
-
-" Colors
-	hi markdownItalic					cterm=italic gui=italic ctermfg=fg
-	hi markdownBold						cterm=bold gui=bold ctermfg=fg
