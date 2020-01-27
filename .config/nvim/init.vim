@@ -14,8 +14,8 @@ call plug#begin('~/.config/nvim/plugins')
 	Plug 'vimwiki/vimwiki'
 	Plug 'scrooloose/nerdtree'
 	Plug 'junegunn/goyo.vim'
-call plug#end()
-
+	Plug 'tpope/vim-surround'
+call plug#end() 
 " Some basics:
 	let mapleader =","
 	set laststatus=2 ruler rulerformat=%l,%v
@@ -27,6 +27,7 @@ call plug#end()
 	set splitbelow splitright
 	set history=1000 undolevels=1000
 	set scrolloff=10
+	set notimeout ttimeout
 
 	" Allows vim yank and paste to use the system clipboard
 	set clipboard=unnamed
@@ -40,8 +41,7 @@ call plug#end()
 
 	" Shortcuts to frequently used functions
 	nnoremap S :%s//g<Left><Left>
-
-	" Plugin specific keybindings
+" Plugin specific keybindings
 	nnoremap <leader>n :NERDTreeToggle<CR>
 	nnoremap <leader>g :Goyo<CR>
 
@@ -54,8 +54,9 @@ call plug#end()
 " Reformat paragraphs
 	nnoremap Q gqap
 	vnoremap Q gq
-	" Use ctrl+l to correct spelling on the fly
-	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+	" Use ctrl+s to correct spelling on the fly
+	inoremap <C-s> <Esc>[s1z=`]a
 
 	" Add todays date to file
 	inoremap <leader>t <Esc>:put =strftime('%Y-%m-%d')<CR>
@@ -71,6 +72,10 @@ call plug#end()
 
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Use make line bold using markdown syntax
+	inoremap <leader>b <Esc>0i**<Esc>$a**
+	nnoremap <leader>b 0i**<Esc>$a**<Esc>0
 
 " Vimtex settings
 	let g:tex_flavor='latex'
