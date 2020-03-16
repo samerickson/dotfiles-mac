@@ -7,10 +7,10 @@
 alias	vim="nvim"
 
 # System commands
-alias	mx="chmod a+x"
+alias	mx="chmod u+x"
 
 # Reload shell environment
-alias	src="source ~/.zshrc; echo 'reloaded .zshrc'"
+alias	src="source ~/.config/zsh/.zshrc; echo 'reloaded .zshrc'"
 
 # Open notes
 alias	n="$EDITOR ~/OneDrive/notes/index.md" \
@@ -28,7 +28,8 @@ alias	cb="cs ~/.local/bin" \
 
 # aliases for quickly editing frequently accessed configuration files
 alias	cfb="$EDITOR ~/.bash_profile" \
-		cfz="$EDITOR ~/.zshrc" \
+		cfp="$EDITOR ~/.profile" \
+		cfz="$EDITOR ~/.config/zsh/.zshrc" \
 		cfa="$EDITOR ~/.config/aliasrc" \
 		cfv="$EDITOR ~/.config/nvim/init.vim" \
 		cft="$EDITOR ~/.tmux.conf" \
